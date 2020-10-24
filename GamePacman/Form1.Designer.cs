@@ -1,4 +1,6 @@
-﻿namespace GamePacman
+﻿using System.Windows.Forms;
+
+namespace GamePacman
 {
     partial class Form1
     {
@@ -53,6 +55,7 @@
             // 
             // Form1
             // 
+           
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Blue;
@@ -60,6 +63,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.ResumeLayout(false);

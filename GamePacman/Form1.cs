@@ -19,14 +19,15 @@ namespace GamePacman
 
         Pacman pacman;
         string labelText = "Conins: ";
+        
         Field field;
         bool VicMessage = false;
         public Form1()
         {
-          
+
             InitializeComponent();
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
-         
+
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             Settings settings = new Settings();
             using (FileStream stream = new FileStream(@"settings.dat", FileMode.Open))
@@ -35,7 +36,7 @@ namespace GamePacman
             }
 
             field = new Field(settings);
-            pacman = new Pacman(field.Width/2, field.Height / 2, 20, 20, Resource1.pacman);
+            pacman = new Pacman(field.Width / 2, field.Height / 2, 20, 20, Resource1.pacman);
             field.pacman = pacman;
             UpdateStyles();
 
@@ -52,7 +53,7 @@ namespace GamePacman
         {
             pacman.Move(field);
             label1.Text = labelText + pacman.Coins.ToString() + " / " + field.MaxCoins.ToString();
-            if (pacman.Coins == field.MaxCoins&&!VicMessage)
+            if (pacman.Coins == field.MaxCoins && !VicMessage)
             {
                 //MessageBox.Show("Победа!");
                 VicMessage = true;
@@ -69,6 +70,16 @@ namespace GamePacman
 
             pacman.Read(e.KeyChar);
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+            Width = field.Width + pacman.Width / 2;
+            Height = field.Height + 100;
+            this.MinimumSize = new Size(Width, Height);
+            this.MaximumSize = new Size(Width, Height);
+            this.Location = new Point(1920 / 2 - field.Width / 2, 0);//1920 - мое разрешение экрана по горизонтали 
         }
     }
 }
