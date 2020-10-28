@@ -30,7 +30,7 @@ namespace GamePacman
 
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             Settings settings = new Settings();
-            using (FileStream stream = new FileStream(@"settings.dat", FileMode.Open))
+            using (FileStream stream = new FileStream(@"settings2.dat", FileMode.Open))
             {
                 settings = binaryFormatter.Deserialize(stream) as Settings;
             }
@@ -79,7 +79,7 @@ namespace GamePacman
             Height = field.Height + 100;
             this.MinimumSize = new Size(Width, Height);
             this.MaximumSize = new Size(Width, Height);
-            this.Location = new Point(1920 / 2 - field.Width / 2, 0);//1920 - мое разрешение экрана по горизонтали 
+            this.Location = new Point(ClientSize.Width  / 2, 0);//1920 - мое разрешение экрана по горизонтали 
         }
     }
 }
